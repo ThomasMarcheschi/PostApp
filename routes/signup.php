@@ -1,5 +1,4 @@
 <?php 
-
 include_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/UserController.php";
 
 if(isset($_POST['email'],$_POST['password'],$_POST['username'])){
@@ -13,7 +12,7 @@ if($user -> isDataValid() && $_POST['password'] === $_POST['passwordConfirm']){
     }
 
 $user -> signupUser();
-
+header('Location: /login.php');
 }else{
     $returnData = $user -> getErrors();
     header('Location: /login?inscription=error&' . $returnData);

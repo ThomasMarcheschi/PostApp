@@ -11,7 +11,7 @@ PAGE LOGIN
 -Formulaire pour s'inscrire. DONE
 -Script pour ajouter un user dans la base de donnée. DONE
 
--Formulaire de connection.
+-Formulaire de connection. DONE
 -Script pour vérifier si l'utilisateur a donné un email et un password valide.
 -Stocker les infos (id, email, username, avatar, imageCouverture) quelque part: session.
 
