@@ -4,10 +4,10 @@ include_once $_SERVER['DOCUMENT_ROOT']."/components/navbar.php";
 <!DOCTYPE html>
 <html lang="fr">
 <?php 
-$title = "Accueil";
+$title = "Profil";
 include_once $_SERVER['DOCUMENT_ROOT']."/components/head.php";
 ?>
 <body>
-    <h1>Accueil</h1>
+    <h1>Page de profil</h1>
 </body>
 </html>
