@@ -25,9 +25,10 @@ class UserModel extends DB{
     }
 
     function fetch() : array {
-        $stmt = $this -> getConnect() -> prepare('SELECT * FROM users WHERE email=?');
+        $stmt = $this -> getConnect() -> prepare('SELECT * FROM users WHERE email=? || username=?');
     
         $stmt -> bindParam(1, $this ->email);
+        $stmt -> bindParam(2, $this ->username);
     
         $res = $stmt -> execute();
         

@@ -103,10 +103,26 @@ class UserController
         return strlen($this->password) >= self::MIN_PASSWORD_LENGTH;
     }
 
+    function usernameValid() :bool{
+        return filter_var($this->username, FILTER_DEFAULT);
+      }
+
     function isDataValid(): bool
     {
         return $this->isEmailValid() && $this->isPasswordValid();
     }
+
+    function getErrors(){
+        $errors = [];
+
+        !$this ->isEmailValid() ? array_push($errors, "emailError=InputInvalid") : null;
+        !$this ->isPasswordValid() ? array_push($errors, "passwordError=InputInvalid") : null;
+        !$this ->usernameValid() ? array_push($errors, "usernameError=InputInvalid") : null;
+        if($_POST['password'] !== $_POST['passwordConfirm']){
+             array_push($errors, "passwordConfirmError=InputInvalid");
+        }
+        return join("&", $errors);
+      }
 
     function exist(){
         $userModel = new UserModel($this -> email, $this -> password,$this -> username);
@@ -130,13 +146,8 @@ class UserController
         return $userFromDB['password'] === $this -> password;
       }
 
-      function getErrors(){
-        $errors = [];
+      
 
-        !$this ->isEmailValid() ? array_push($errors, "emailError=InputInvalid") : null;
-        !$this ->isPasswordValid() ? array_push($errors, "passwordError=InputInvalid") : null;
-
-        return join("&", $errors);
-      }
+      
     
 }

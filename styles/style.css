@@ -13,17 +13,25 @@ nav>ul {
     display: flex;
 }
 
-nav>ul>li,nav a {
-    color: black;
+nav>ul>li,nav a{ 
+
+    color: rgb(56, 56, 56);
     padding: 15px;
 }
 
-form{
-    background-color: gray;
-    padding: 1em;
+.authentification {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+form {
+    background-color: rgb(56, 56, 56);
+    padding: 1em;
     margin: 1em 0;
+}
+
+.error{
+    color: red;
 }
