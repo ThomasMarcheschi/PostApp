@@ -41,5 +41,32 @@ class UserModel extends DB{
         return $userFromDB;
       }
 
+       static function fetchProfil($email): array{
+        $connect = DB::getConnection();
+
+        $stmt = $connect -> getConnect() -> prepare('SELECT * FROM users WHERE email=?');
+        $stmt -> bindParam(1,$email);
+        $res = $stmt -> execute();
+
+        $userFromDB = $stmt -> fetch(PDO::FETCH_ASSOC);
+        return $userFromDB;
+      }
+
+      static function fetchByID($id){
+        $connect = DB::getConnection();
     
-}
+        $stmt = $connect -> getConnect() -> prepare('SELECT * FROM users WHERE id=?');
+    
+        $stmt -> bindParam(1, $id);
+        $res = $stmt ->execute();
+        $userFromDB = $stmt -> fetch(PDO::FETCH_ASSOC);
+        return $userFromDB;
+      }
+    
+      function saveImageToDB($image){
+        $stmt = $this -> getConnect() -> prepare("UPDATE users SET avatar=? WHERE email=?");
+        $stmt ->bindParam(1, $image);
+        $stmt ->bindParam(2, $this -> email);
+        $stmt ->execute();
+      }
+    }

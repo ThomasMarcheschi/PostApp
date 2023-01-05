@@ -35,3 +35,26 @@ form {
 .error{
     color: red;
 }
+
+
+.info-profil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#avatar{
+    width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 1px solid rgb(26, 51, 116);
+}
+
+#couverture{
+    width: 900px;
+    height: 450px;
+    object-fit: cover;
+    
+}

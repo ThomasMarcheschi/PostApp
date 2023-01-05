@@ -7,13 +7,14 @@ if (!(isset($_POST['email'], $_POST['password']))) {
     die();
 }
 
-$user = new UserController($_POST['email'], $_POST['password'], "");
+$user = new UserController($_POST['email'], $_POST['password'],"");
 
 if (!($user->isDataValid())) {
     header("Location: /login.php?connexion=error&" . $user->getErrors());
     die();
 }
 
+$user1=UserController::dataProfil($_POST['email']);
 
 if (!$user->exist()) {
     header("Location: /login.php?connexion=error&emailError=EmailDosntExist");
@@ -26,10 +27,11 @@ if (!$user->isPasswordCorrect()) {
     die();
 }
 
-$_SESSION["email"] = $user->getEmail();
-$_SESSION["id"] = $user->getId();
-$_SESSION["username"] = $user->getUsername();
-$_SESSION["avatar"] = $user->getAvatar();
-$_SESSION["imageCouverture"] = $user->getImageCouverture();
+
+$_SESSION["email"] = $user1['email'];
+$_SESSION["id"] = $user1['id'];
+$_SESSION["username"] = $user1['username'];
+$_SESSION["avatar"] = $user1['avatar'];
+$_SESSION["imageCouverture"] = $user1['imageCouverture'];
 
 header("Location: /profil.php");

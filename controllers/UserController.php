@@ -147,7 +147,55 @@ class UserController
       }
 
       
+      static function dataProfil($email){
+        $profilUser = UserModel::fetchProfil($email);
+        return $profilUser;
+      }
 
+
+
+      static function createUserFromId($id){
+        $userFromDB = UserModel::fetchByID($id);
+        $controller = new self($userFromDB['email'], $userFromDB['password'],$userFromDB['username']);
+        $controller -> id = $id;
+        $controller -> imageCouverture = $userFromDB['imageCouverture'];
+        $controller -> avatar = $userFromDB['avatar'];
+        
+        
+        
+        return $controller;
+      }
+    
+      function isImageValidAvatar($avatar){
+        $imageInfo = pathinfo($avatar['name']);
+    
+        return in_array($imageInfo['extension'], array('jpg', 'jpeg', 'png', 'gif', 'svg'));
+      }
+    
+      function saveImageAvatar($avatar){
+        $imageInfo = pathinfo($avatar['name']);
+        $image = $_SESSION['id'].'.'.$imageInfo['extension'];
+        copy($avatar['tmp_name'], '../images/users/'. $image);
+    
+        //Utiliser le model pour mettre a jour user dans la DB.
+        $this ->userModel -> saveImageToDB($image);
+        return $image;
+      }
       
+      function isImageValidCouverture($imageCouverture){
+        $imageInfo = pathinfo($imageCouverture['name']);
+    
+        return in_array($imageInfo['extension'], array('jpg', 'jpeg', 'png', 'gif', 'svg'));
+      }
+    
+      function saveImageCouverture($imageCouverture){
+        $imageInfo = pathinfo($imageCouverture['name']);
+        $image = $_SESSION['id'].'.1.'.$imageInfo['extension'];
+        copy($imageCouverture['tmp_name'], '../images/users/'. $image);
+    
+        //Utiliser le model pour mettre a jour user dans la DB.
+        $this ->userModel -> saveImageToDB($image);
+        return $image;
+      }
     
 }
