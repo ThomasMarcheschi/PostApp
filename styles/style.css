@@ -27,7 +27,7 @@ nav>ul>li,nav a{
 }
 
 form {
-    background-color: rgb(56, 56, 56);
+    background-color:gray;
     padding: 1em;
     margin: 1em 0;
 }
@@ -49,7 +49,7 @@ form {
   height: 200px;
   object-fit: cover;
   border-radius: 100%;
-  border: 1px solid rgb(26, 51, 116);
+  border: 1px solid gray;
 }
 
 #couverture{
@@ -57,4 +57,36 @@ form {
     height: 450px;
     object-fit: cover;
     
+}
+.modif-image {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modif-image > form{
+    background-color: gray;
+}
+
+.modif-image > p {
+    margin-top: 1em;
+}
+
+.message{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message > form{
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.message > form > input,textarea{
+    margin-bottom: 1em;
 }

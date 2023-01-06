@@ -1,5 +1,6 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . "/models/UserModel.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/PostController.php";
 
 class UserController
 {
@@ -9,6 +10,7 @@ class UserController
     private $id;
     private $avatar;
     private $imageCouverture;
+    private $post = [];
 
     private $userModel;
 
@@ -175,10 +177,10 @@ class UserController
       function saveImageAvatar($avatar){
         $imageInfo = pathinfo($avatar['name']);
         $image = $_SESSION['id'].'.'.$imageInfo['extension'];
-        copy($avatar['tmp_name'], '../images/users/'. $image);
+        copy($avatar['tmp_name'], '../images/avatar/'. $image);
     
         //Utiliser le model pour mettre a jour user dans la DB.
-        $this ->userModel -> saveImageToDB($image);
+        $this ->userModel -> saveAvatarToDB($image);
         return $image;
       }
       
@@ -191,11 +193,27 @@ class UserController
       function saveImageCouverture($imageCouverture){
         $imageInfo = pathinfo($imageCouverture['name']);
         $image = $_SESSION['id'].'.1.'.$imageInfo['extension'];
-        copy($imageCouverture['tmp_name'], '../images/users/'. $image);
+        copy($imageCouverture['tmp_name'], '../images/couverture/'. $image);
     
         //Utiliser le model pour mettre a jour user dans la DB.
-        $this ->userModel -> saveImageToDB($image);
+        $this ->userModel -> saveCouvertureToDB($image);
         return $image;
       }
+
+      function addPost($postContent,$postTitle,$postImage){
+        $todoController = new PostController($postContent,$postTitle,$postImage, $this -> id);
     
+        $todoController -> addPost();
+      }
+    
+
+    /**
+     * Get the value of post
+     */ 
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+
 }

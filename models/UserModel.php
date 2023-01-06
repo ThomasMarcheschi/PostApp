@@ -63,9 +63,16 @@ class UserModel extends DB{
         return $userFromDB;
       }
     
-      function saveImageToDB($image){
+      function saveAvatarToDB($avatar){
         $stmt = $this -> getConnect() -> prepare("UPDATE users SET avatar=? WHERE email=?");
-        $stmt ->bindParam(1, $image);
+        $stmt ->bindParam(1, $avatar);
+        $stmt ->bindParam(2, $this -> email);
+        $stmt ->execute();
+      }
+
+      function saveCouvertureToDB($couverture){
+        $stmt = $this -> getConnect() -> prepare("UPDATE users SET imageCouverture=? WHERE email=?");
+        $stmt ->bindParam(1, $couverture);
         $stmt ->bindParam(2, $this -> email);
         $stmt ->execute();
       }

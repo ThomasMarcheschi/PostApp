@@ -17,17 +17,20 @@ PAGE LOGIN
 
 PAGE PROFIL
 
--Afficher les informations d'utilisateur:
-    -Image de couverture
-    -Avatar
-    -Username
+-Afficher les informations d'utilisateur:  
+    -Image de couverture . DONE
+    -Avatar . DONE
+    -Username . DONE
+
+-formulaire pour changer d'image d'avatar et de couverture. DONE
+
 
 -Formulaire pour envoyer un post :
-    -Titre
-    -Image optionnelle
-    -Contenu
+    -Titre  .DONE
+    -Image optionnelle .DONE
+    -Contenu .DONE
 
--Script pour conserver les posts dans la base de donnée.
+-Script pour conserver les posts dans la base de donnée. .DONE
 
 -Afficher tout les posts de l'utilisateur.
 

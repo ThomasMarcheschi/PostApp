@@ -18,12 +18,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/components/head.php";
 
 
     <div class="info-profil">
-        <img id="couverture" src='<?= "/images/users/" . $_SESSION['imageCouverture'] ?>' alt="imageCouverture">
-        <img id="avatar" src='<?= "/images/users/" . $_SESSION['avatar'] ?>' alt="avatar">
+        <img id="couverture" src='<?= "/images/couverture/" . $_SESSION['imageCouverture'] ?>' alt="imageCouverture">
+        <img id="avatar" src='<?= "/images/avatar/" . $_SESSION['avatar'] ?>' alt="avatar">
         <p><?= $_SESSION['username'] ?></p>
     </div>
 
-    <section>
+    <section class="modif-image">
         <p>Changer D'image de Couverture</p>
         <form action="/routes/uploadCouverture.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="imageCouverture" accept="image/png, image/jpeg" />
@@ -34,10 +34,18 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/components/head.php";
             <input type="file" name="avatar" accept="image/png, image/jpeg" />
             <button type="submit">Enregistrer</button>
         </form>
-
     </section>
 
-    <?php var_dump($_SESSION)?>
+    <section class="message">
+        <h2>Ecrire un Post</h2>
+        <form action="/routes/addPost.php" method="POST">
+            <input type="text" name="titre" placeholder="Entrer un titre">
+            <textarea type="textarea" name="content" placeholder="Entrer votre message"></textarea>
+            <input type="file" name="imageOptionnelle">
+            <button>Valider</button>
+        </form>
+    </section>
+    
 
 
 </body>
