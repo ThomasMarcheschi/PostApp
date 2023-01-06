@@ -11,6 +11,7 @@ class UserController
     private $avatar;
     private $imageCouverture;
     private $post = [];
+  
 
     private $userModel;
 
@@ -215,5 +216,15 @@ class UserController
         return $this->post;
     }
 
+    static function createPostFromId($id){
+      $postFromDB = PostController::fetchAll($id);
+      $controller = new self("","","","");
+      
+      $controller -> post = PostController::fetchAll($id);
+      
+      return $controller;
+      var_dump($controller);
+    }
 
+    
 }

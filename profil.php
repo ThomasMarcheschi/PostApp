@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/UserController.php";
+$postController = UserController::createPostFromId($_SESSION['id'])
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -44,6 +45,23 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/components/head.php";
             <input type="file" name="imageOptionnelle">
             <button>Valider</button>
         </form>
+        <h2>Vos Posts</h2>
+        <div>
+            <?php 
+            foreach($postController -> getPost() as $key => $postTab){
+                echo "<div class='post-user'><p>".$postTab['titre']."</p>
+                      <p>".$postTab['content']."</p></div>
+                            
+                        
+                        
+                
+                
+                ";
+
+            }
+            
+            ?>
+        </div>
     </section>
     
 

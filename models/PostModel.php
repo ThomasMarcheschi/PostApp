@@ -38,4 +38,12 @@ class PostModel extends DB{
             $stmt -> execute();
             return $stmt -> fetch(PDO::FETCH_ASSOC);
           }
+
+          static function fetchAll($usernameID){
+            $connect = DB::getConnection();
+            $stmt = $connect -> getConnect() -> prepare("SELECT * FROM post WHERE usernameID=?");
+            $stmt -> bindParam(1,$usernameID);
+            $stmt -> execute();
+            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+          }
 }

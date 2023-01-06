@@ -90,3 +90,12 @@ form {
 .message > form > input,textarea{
     margin-bottom: 1em;
 }
+
+.post-user{
+    background-color: gray;
+    margin-bottom: 1em;
+}
+
+
+
+

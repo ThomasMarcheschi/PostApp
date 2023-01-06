@@ -10,6 +10,7 @@ class PostController{
     private $usernameID;
 
     private $postModel;
+    private $post = [];
 
     function __construct($postContent,$postTitle,$postImage,$usernameID){
         $this -> content = $postContent;
@@ -24,4 +25,12 @@ class PostController{
         $this -> date = $postTab['date'];
         $this -> id = $postTab['id'];
     }
+
+   static function fetchAll($usernameID){
+    return PostModel::fetchAll($usernameID);
+   }
+
+
+      
+  
 }
